@@ -42,6 +42,7 @@ public class UserThread extends Thread {
             server.removeUserName(userName);
             server.removeUserThread(this);
             server.broadcastMessage("["+userName+"] has left",this);
+            socket.close();
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -49,10 +50,16 @@ public class UserThread extends Thread {
     }
 
     private void printConnectedUsers() {
-        this.sendMessageToClient(server.getUserNames()+" Users are connected.");
+        if(server.getUserNames().isEmpty()){
+            this.sendMessageToClient("No Users are connected.");
+
+        }else{
+            this.sendMessageToClient(server.getUserNames()+" Users are connected.");
+
+        }
     }
 
     public void sendMessageToClient(String message){
-        this.socketWriter.print(message);
+        this.socketWriter.println(message);
     }
 }
