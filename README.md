@@ -85,3 +85,7 @@ Start a Client
 ```
 java -cp . com.bhanuchaddha.chat.Client localhost 8090
 ```
+
+
+##### Inspiration
+<a  href="https://www.codejava.net/java-se/networking/how-to-create-a-chat-console-application-in-java-using-socket"> Java Socket Chat</a>
